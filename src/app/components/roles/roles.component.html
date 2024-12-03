@@ -1,0 +1,72 @@
+<p>roles works!</p>
+<div class="row">
+  <div class="col-3">
+    <p> {{angularVersion}} </p>
+  </div>
+  <div class="col-3">
+    <p>{{firstname}}</p>
+  </div>
+  <div class="col-3">
+    <p>{{currentDate}}</p>
+  </div>
+  <div class="col-3">
+    <p>{{ selectedState }}</p>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col3">
+    <input type="text" class="form-control" [value]="firstname">
+  </div>
+  <div class="col-3">
+    <input type="text"[(ngModel)]="firstname">
+  </div>
+  <div class="col-3">
+    <input [type]="inputType">
+  </div>
+  <div class="col-3">
+    <select [(ngModel)]="selectedState">
+      <option value="MH">MH</option>
+      <option value="MP">MP</option>
+      <option value="UP">UP</option>
+      <option value="BH">BH</option>
+
+    </select>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-3">
+    <button class="btn btn-success" (click)="showWelcomeAlert()">show alert</button>
+  </div>
+  <div class="col-3">
+    <button class="btn btn-success" (click)="showMessage('Welcome to React')">show react msg</button>
+  </div>
+  <div class="col-3">
+    <button class="btn btn-success" (click)="showMessage('Welcome to Angular')">show angular msg</button>
+  </div>
+  <div class="col-3">
+    <button class="btn btn-success" (click)="showMessage('Welcome to .Net')">show .Net msg</button>
+  </div>
+</div>
+
+<!--Data Binding-->
+
+<!--Interpolation ({{}}): Used to bind component data to the view for display.-->
+<!--Property Binding ([property]): Binds component data to an element's property.-->
+<!--Event Binding ((event)): Binds an event in the template to a method in the component. used to listen to user actions like clicks, key presses, etc.-->
+<!--Two-Way Binding ([(ngModel)]): Synchronizes data between the component and the view, allowing both to update each other.
+uses in input elements like <input>, <select>, and <textarea>.
+It doesn’t apply to display elements like <div> or <p> as they can't accept user input.-->
+
+
+<!--Directive-->
+
+<!--classes that add additional behavior to elements-->
+<!--Structural Directive-->
+<!--Structural directives modify the structure of the DOM by adding, removing, or manipulating elements.
+They are typically starts with asterisk(*). Eg: *ngIf, *ngFor-->
+
+<!--Attribute Directive-->
+<!--can add or change behaviour to the existing element. Eg: ngClass, ngStyle-->
