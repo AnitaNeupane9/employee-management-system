@@ -1,55 +1,93 @@
-<p>roles works!</p>
 <div class="row">
-  <div class="col-3">
-    <p> {{angularVersion}} </p>
-  </div>
-  <div class="col-3">
-    <p>{{firstname}}</p>
-  </div>
-  <div class="col-3">
-    <p>{{currentDate}}</p>
-  </div>
-  <div class="col-3">
-    <p>{{ selectedState }}</p>
+  <div class="col-12">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>S.N.</th>
+        <th>Role Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let role of roleList; let sn = index ">
+        <td>{{sn}}</td>
+        <td>{{role.role}}</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
+<!--<div class="row">-->
+<!--  <div class="col-4">-->
+<!--    <ul>-->
+<!--      <li *ngFor="let item of roleList">-->
+<!--        {{item.role}}-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--  <div class="col-4">-->
+<!--    <select>-->
+<!--      <option *ngFor="let role of roleList" [value]="role.roleId"> {{role.role}}</option>-->
+<!--    </select>-->
+<!--  </div>-->
+<!--  <div class="col-4">-->
+<!--    <button class="btn btn-warning mx-1" *ngFor="let item of roleList">{{item.role}}</button>-->
+<!--  </div>-->
+<!--</div>-->
 
-<div class="row">
-  <div class="col3">
-    <input type="text" class="form-control" [value]="firstname">
-  </div>
-  <div class="col-3">
-    <input type="text"[(ngModel)]="firstname">
-  </div>
-  <div class="col-3">
-    <input [type]="inputType">
-  </div>
-  <div class="col-3">
-    <select [(ngModel)]="selectedState">
-      <option value="MH">MH</option>
-      <option value="MP">MP</option>
-      <option value="UP">UP</option>
-      <option value="BH">BH</option>
+<!--<p>roles works!</p>-->
+<!--<div class="row">-->
+<!--  <div class="col-3">-->
+<!--    <p> {{angularVersion}} </p>-->
+<!--  </div>-->
+<!--  <div class="col-3">-->
+<!--    <p>{{firstname}}</p>-->
+<!--  </div>-->
+<!--  <div class="col-3">-->
+<!--    <p>{{currentDate}}</p>-->
+<!--  </div>-->
+<!--  <div class="col-3">-->
+<!--    <p>{{ selectedState }}</p>-->
+<!--  </div>-->
+<!--</div>-->
 
-    </select>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-3">
-    <button class="btn btn-success" (click)="showWelcomeAlert()">show alert</button>
-  </div>
-  <div class="col-3">
-    <button class="btn btn-success" (click)="showMessage('Welcome to React')">show react msg</button>
-  </div>
-  <div class="col-3">
-    <button class="btn btn-success" (click)="showMessage('Welcome to Angular')">show angular msg</button>
-  </div>
-  <div class="col-3">
-    <button class="btn btn-success" (click)="showMessage('Welcome to .Net')">show .Net msg</button>
-  </div>
-</div>
+<!--<div class="row">-->
+<!--  <div class="col3">-->
+<!--    <input type="text" class="form-control" [value]="firstname">-->
+<!--  </div>-->
+<!--  <div class="col-3">-->
+<!--    <input type="text"[(ngModel)]="firstname">-->
+<!--  </div>-->
+<!--  <div class="col-3">-->
+<!--    <input [type]="inputType">-->
+<!--  </div>-->
+<!--  <div class="col-3">-->
+<!--    <select [(ngModel)]="selectedState">-->
+<!--      <option value="MH">MH</option>-->
+<!--      <option value="MP">MP</option>-->
+<!--      <option value="UP">UP</option>-->
+<!--      <option value="BH">BH</option>-->
+
+<!--    </select>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div class="row">-->
+<!--  <div class="col-3">-->
+<!--    <button class="btn btn-success" (click)="showWelcomeAlert()">show alert</button>-->
+<!--  </div>-->
+<!--  <div class="col-3">-->
+<!--    <button class="btn btn-success" (click)="showMessage('Welcome to React')">show react msg</button>-->
+<!--  </div>-->
+<!--  <div class="col-3">-->
+<!--    <button class="btn btn-success" (click)="showMessage('Welcome to Angular')">show angular msg</button>-->
+<!--  </div>-->
+<!--  <div class="col-3">-->
+<!--    <button class="btn btn-success" (click)="showMessage('Welcome to .Net')">show .Net msg</button>-->
+<!--  </div>-->
+<!--</div>-->
+
 
 <!--Data Binding-->
 
@@ -70,3 +108,17 @@ They are typically starts with asterisk(*). Eg: *ngIf, *ngFor-->
 
 <!--Attribute Directive-->
 <!--can add or change behaviour to the existing element. Eg: ngClass, ngStyle-->
+
+
+<!--OnInit-->
+<!--OnInit is an interface in Angular.
+It is implemented in a component to use the lifecycle hook.-->
+
+<!--ngOnInit -->
+<!--ngOnInit is a lifecycle hook in Angular called after the constructor and input properties are initialized.
+It is used for additional initialization tasks required by the component.-->
+
+<!--Service -->
+<!--Normally, we don't write code of API call in component(but we can), we'll do that in service-->
+<!--service is a class where we encapsulate code logic and handle API interactions.
+It can be used throughout the project.-->

@@ -1,1 +1,36 @@
-<p>designation works!</p>
+<div class="row">
+  @if (isLoader == true){
+    <div class="col-12 text-center">
+      <div class="spinner-border text-muted"></div>
+    </div>
+  } @else {
+    <div *ngFor="let item of designationList$ | async; let i = index" class="col-3">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">{{ item.designation }}</h4>
+          <a class="card-link" href="#">Edit</a>
+          <a class="card-link" href="#">Delete</a>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+
+
+<!--Alternative Approach (Control flow statement-- do not need to import anything) -->
+
+<!--<div class="row">-->
+<!--  @for (item of designationList$| async; track $index) {-->
+<!--    <div class="col-3">-->
+<!--      <div class="card">-->
+<!--        <div class="card-body">-->
+<!--          <h4 class="card-title">{{ item.designation }}</h4>-->
+<!--          <a href="#" class="card-link">Edit</a>-->
+<!--          <a href="#" class="card-link">Delete</a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  }-->
+<!--</div>-->
+
+
