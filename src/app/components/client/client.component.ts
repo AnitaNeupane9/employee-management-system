@@ -3,11 +3,13 @@ import {Client} from '../../model/class/client';
 import {FormsModule} from '@angular/forms';
 import {ClientService} from '../../services/client.service';
 import {APIResponseModel} from '../../model/interface/role';
+import {UpperCasePipe} from '@angular/common';
 
 @Component({
   selector: 'app-client',
   imports: [
-    FormsModule
+    FormsModule,
+    UpperCasePipe
   ],
   templateUrl: './client.component.html',
   styleUrl: './client.component.css'

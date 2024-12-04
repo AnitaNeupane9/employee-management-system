@@ -21,11 +21,11 @@
               <tbody>
                 @for (item of clientList; track $index) {
                   <tr>
-                    <td>{{$index + 1}}</td>
-                    <td>{{item.companyName}}</td>
-                    <td>{{item.contactPersonName}}</td>
-                    <td>{{item.contactNo}}</td>
-                    <td>{{item.city}}</td>
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ item.companyName | uppercase}}</td>
+                    <td>{{ item.contactPersonName }}</td>
+                    <td>{{ item.contactNo }}</td>
+                    <td>{{ item.city }}</td>
                     <td>
                       <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
                       <button class="btn btn-danger" (click)="onDelete(item.clientId)">Delete</button>
@@ -46,53 +46,71 @@
         New Client
       </div>
       <div class="card-body">
+        <form #form = "ngForm">
         <div class="row">
           <div class="col-6">
-            <label for="personName"> Person Name</label>
-            <input [(ngModel)]="clientObj.contactPersonName" class="form-control" id="personName" type="text">
+
+            <!-- #personName="ngModel" is called Template Reference Variable.
+            This allows us to  access the NgModel instance in the template, providing access to validation states (e.g., personName.valid, personName.errors).-->
+
+            <label for="contactPersonName"> Person Name</label>
+            <input type="text"
+              #personName="ngModel" required minlength="3"
+              name="contactPersonName" [(ngModel)]="clientObj.contactPersonName" class="form-control" id="contactPersonName">
+
+            @if (personName.touched) {
+              <div class="text-danger">
+                @if (personName?.errors?.['required']) {
+                  <span>This is Required.</span>
+                }
+                @if (personName?.errors?.['minlength']) {
+                  <span>Name should be at least of 3 characters.</span>
+                }
+              </div>
+            }
           </div>
           <div class="col-6">
             <label for="companyName">Company Name</label>
-            <input [(ngModel)]="clientObj.companyName" class="form-control" id="companyName" type="text">
+            <input type="text" name="companyName" [(ngModel)]="clientObj.companyName" class="form-control" id="companyName">
           </div>
 
           <div class="col-6">
             <label for="contactNo">Contact No</label>
-            <input [(ngModel)]="clientObj.contactNo" class="form-control" id="contactNo" type="text">
+            <input type="text" name="contactNo" [(ngModel)]="clientObj.contactNo" class="form-control" id="contactNo">
           </div>
 
           <div class="col-6">
             <label for="city">City</label>
-            <input [(ngModel)]="clientObj.city" class="form-control" id="city" type="text">
+            <input type="text" name="city" [(ngModel)]="clientObj.city" class="form-control" id="city">
           </div>
 
           <div class="col-6">
             <label for="state">State</label>
-            <input [(ngModel)]="clientObj.state" class="form-control" id="state" type="text">
+            <input type="text" name="state" [(ngModel)]="clientObj.state" class="form-control" id="state">
           </div>
 
           <div class="col-6">
             <label for="pincode">Pincode</label>
-            <input [(ngModel)]="clientObj.pincode" class="form-control" id="pincode" type="text">
+            <input type="text" name="pincode" [(ngModel)]="clientObj.pincode" class="form-control" id="pincode">
           </div>
 
           <div class="col-6">
             <label for="address">Address</label>
-            <textarea [(ngModel)]="clientObj.address" class="form-control" id="address"></textarea>
+            <textarea name="address" [(ngModel)]="clientObj.address" class="form-control" id="address"></textarea>
           </div>
           <div class="col-6">
             <label for="employeeStrength">Employee Strength</label>
-            <input [(ngModel)]="clientObj.employeeStrength" class="form-control" id="employeeStrength" type="number">
+            <input type="number" name="employeeStrength" [(ngModel)]="clientObj.employeeStrength" class="form-control" id="employeeStrength">
           </div>
 
           <div class="col-6">
             <label for="gstNo">GST No</label>
-            <input [(ngModel)]="clientObj.gstNo" class="form-control" id="gstNo" type="text">
+            <input type="text" name="gstNo" [(ngModel)]="clientObj.gstNo" class="form-control" id="gstNo">
           </div>
 
           <div class="col-6">
             <label for="regNo">Registration No</label>
-            <input [(ngModel)]="clientObj.regNo" class="form-control" id="regNo" type="text">
+            <input type="text" name="regNo" [(ngModel)]="clientObj.regNo" class="form-control" id="regNo">
           </div>
         </div>
         <div class="row pt-2">
@@ -100,11 +118,12 @@
             <button class="btn btn-secondary">Reset</button>
           </div>
           <div class="col-6 text-center">
-            <button  class="btn btn-success" (click)="onSaveClient()">
-              {{clientObj.clientId != 0? 'Update Client': 'Save Client'}}
+            <button class="btn btn-success" (click)="onSaveClient()" [disabled]="!form.valid">
+              {{ clientObj.clientId != 0 ? 'Update Client' : 'Save Client' }}
             </button>
           </div>
         </div>
+        </form>
       </div>
     </div>
   </div>

@@ -1,0 +1,123 @@
+<div class="row">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header bg-success">
+        Client List
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th>Sr No</th>
+                <th>Company Name</th>
+                <th>Person Name</th>
+                <th>Contact No</th>
+                <th>City</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+<!--                @for (item of clientList; track $index) {-->
+<!--                  <tr>-->
+<!--                    <td>{{ $index + 1 }}</td>-->
+<!--                    <td>{{ item.companyName }}</td>-->
+<!--                    <td>{{ item.contactPersonName }}</td>-->
+<!--                    <td>{{ item.contactNo }}</td>-->
+<!--                    <td>{{ item.city }}</td>-->
+<!--                    <td>-->
+<!--                      <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>-->
+<!--                      <button class="btn btn-danger" (click)="onDelete(item.clientId)">Delete</button>-->
+<!--                    </td>-->
+<!--                  </tr>-->
+<!--                }-->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header bg-success">New Client</div>
+      <div class="card-body">
+        <form  [formGroup]="projectForm">
+          <div class="row">
+            <div class="col-6">
+              <label for="projectName">Project Name</label>
+              <input type="text" class="form-control" formControlName = "projectName" id="projectName" required>
+            </div>
+            <div class="col-6">
+              <label for="startDate">Start Date</label>
+              <input type="date" class="form-control" formControlName = "startDate" id="startDate" required>
+            </div>
+            <div class="col-6">
+              <label for="expectedEndDate">Expected End Date</label>
+              <input type="date" class="form-control" formControlName = "expectedEndDate" id="expectedEndDate" required>
+            </div>
+            <div class="col-6">
+              <label for="leadByEmpId">Lead By</label>
+              <select class="form-control" formControlName = "leadByEmpId" id="leadByEmpId">
+                <option value="">Select Lead Employee</option>
+                @for (item of employeeList; track $index){
+                  <option [value]="item.empId">{{item.empName}} ({{item.empCode}})</option>
+                }
+              </select>
+            </div>
+
+            <div class="col-6">
+              <label for="completedDate">Completed Date</label>
+              <input type="date" class="form-control" formControlName = "completedDate" id="completedDate">
+            </div>
+            <div class="col-6">
+              <label for="contactPerson">Contact Person</label>
+              <input type="text" class="form-control" formControlName = "contactPerson" id="contactPerson" required>
+            </div>
+            <div class="col-6">
+              <label for="contactPersonContactNo">Contact Mobile</label>
+              <input type="text" class="form-control" formControlName = "contactPersonContactNo" id="contactPersonContactNo" required>
+            </div>
+            <div class="col-6">
+              <label for="contactPersonEmailId">Contact Email</label>
+              <input type="email" class="form-control" formControlName = "contactPersonEmailId" id="contactPersonEmailId" required>
+            </div>
+            <div class="col-6">
+              <label for="totalEmpWorking">Employee Count</label>
+              <input type="number" class="form-control" formControlName = "totalEmpWorking" id="totalEmpWorking" required>
+            </div>
+            <div class="col-6">
+              <label for="projectCost">Project Cost</label>
+              <input type="number" class="form-control" formControlName = "projectCost" id="projectCost" required>
+            </div>
+            <div class="col-6">
+              <label for="projectDetails">Project Details</label>
+              <textarea class="form-control" formControlName = "projectDetails" id="projectDetails" rows="2" required></textarea>
+            </div>
+            <div class="col-6">
+              <label for="clientId">Client</label>
+              <select class="form-control" formControlName = "clientId" id="clientId">
+                <option value="">select client</option>
+                @for (item of clientList; track $index){
+                  <option [value]="item.clientId">{{item.companyName}}</option>
+                }
+              </select>
+            </div>
+          </div>
+          <div class="row pt-2">
+            <div class="col-6 text-center">
+              <button class="btn btn-secondary" type="reset">Reset</button>
+            </div>
+            <div class="col-6 text-center">
+              <button class="btn btn-success" type="submit" (click)="onSaveProject()">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+</div>
