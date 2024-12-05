@@ -4,12 +4,16 @@ import {FormsModule} from '@angular/forms';
 import {ClientService} from '../../services/client.service';
 import {APIResponseModel} from '../../model/interface/role';
 import {UpperCasePipe} from '@angular/common';
+import {AlertComponent} from '../../reusableComponent/alert/alert.component';
+import {MyButtonComponent} from '../../reusableComponent/my-button/my-button.component';
 
 @Component({
   selector: 'app-client',
   imports: [
     FormsModule,
-    UpperCasePipe
+    UpperCasePipe,
+    AlertComponent,
+    MyButtonComponent
   ],
   templateUrl: './client.component.html',
   styleUrl: './client.component.css'

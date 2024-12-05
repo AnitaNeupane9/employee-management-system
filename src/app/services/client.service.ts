@@ -21,6 +21,10 @@ export class ClientService {
     return this.http.get<APIResponseModel>(environment.API_URL + Constant.API_METHOD.GET_ALL_EMPLOYEE)
   }
 
+  getAllClientProject(): Observable<APIResponseModel>{
+    return this.http.get<APIResponseModel>(environment.API_URL + Constant.API_METHOD.GET_ALL_PROJECT)
+  }
+
   addUpdate(obj:Client): Observable<APIResponseModel> {
     return this.http.post<APIResponseModel>(environment.API_URL + "AddUpdateClient", obj)
   }
